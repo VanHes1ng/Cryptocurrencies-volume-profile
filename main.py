@@ -18,6 +18,7 @@ with open('symbols.txt', 'r') as file:
     # Remove square brackets and split by comma
     symbols = [symbol.strip().strip("'") for symbol in content.strip('[]').split(',')]
 
+@st.cache_data
 def get_data(option, period, interval):
     df = yf.download(
                 tickers  = option,
