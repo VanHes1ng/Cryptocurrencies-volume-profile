@@ -32,6 +32,7 @@ col1, col2 = st.columns([2, 1])
 col1.title("Cryptocurrencies Volume Profile")
 
 with col2:
+    st.write("#")
     option = st.selectbox(
         "Select Cryptocurrency:",
         (symbols))   
