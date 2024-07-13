@@ -16,7 +16,7 @@ st.set_page_config(
 with open('symbols.txt', 'r') as file:
     content = file.read()
     # Remove square brackets and split by comma
-    symbols = [symbol.strip().strip("'") for symbol in content.strip('[]').split(',')]
+    symbols = [symbol.strip().strip("'") for symbol in content.split(',')]
 
 @st.cache_data
 def get_data(option, period, interval):
@@ -33,8 +33,6 @@ col1.title("Cryptocurrencies Volume Profile")
 
 with col2:
     st.write("#")
-    st.write("##")  
-    st.write("###")  
     option = st.selectbox(
         "Select Cryptocurrency:",
         (symbols))   
