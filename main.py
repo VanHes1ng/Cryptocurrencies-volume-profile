@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import yfinance as yf
 import matplotlib.colors as mcolors
 import streamlit as st
-from yahooquery import Screener
 
 # Set Page Configurations
 st.set_page_config(
@@ -13,14 +12,11 @@ st.set_page_config(
     layout="wide"
 )
 
-# Step 1: Obtain price and volume data
-s = Screener()
-data = s.get_screeners('all_cryptocurrencies_us', count=250)
-
-# data is in the quotes key
-dicts = data['all_cryptocurrencies_us']['quotes']
-symbols = [d['symbol'] for d in dicts]
-
+# Get Data
+with open('symbols.txt', 'r') as file:
+    content = file.read()
+    # Remove square brackets and split by comma
+    symbols = [symbol.strip().strip("'") for symbol in content.strip('[]').split(',')]
 
 def get_data(option, period, interval):
     df = yf.download(
@@ -53,7 +49,7 @@ with col2:
     threshold = st.number_input("Volume Threshold %:", 1, 100, 94)
 
 progress_text = "Data Loading in progress. Please wait..."
-my_bar = col1.progress(0, text=progress_text)
+my_bar        = col1.progress(0, text=progress_text)
 
 for percent_complete in range(100):
     df = get_data(option, period, interval)
