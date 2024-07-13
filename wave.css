@@ -1,0 +1,7 @@
+.stApp > header {
+    background-color: transparent;
+}
+
+.stApp {
+    background: linear-gradient(40deg, hwb(216 11% 19% / 0.15) 60%, hwb(216 11% 19% / 0.03) 60.05%)
+}
