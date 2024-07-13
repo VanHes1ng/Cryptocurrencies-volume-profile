@@ -18,10 +18,10 @@ s = Screener()
 data = s.get_screeners('all_cryptocurrencies_us', count=250)
 
 # data is in the quotes key
-dicts = data['all_cryptocurrencies_us']
+dicts = data['all_cryptocurrencies_us']['quotes']
 symbols = [d['symbol'] for d in dicts]
 
-@st.cache_data
+
 def get_data(option, period, interval):
     df = yf.download(
                 tickers  = option,
@@ -57,7 +57,7 @@ my_bar = col1.progress(0, text=progress_text)
 
 for percent_complete in range(100):
     df = get_data(option, period, interval)
-
+    
     my_bar.progress(percent_complete + 1, text=progress_text)
 
 my_bar.empty()
