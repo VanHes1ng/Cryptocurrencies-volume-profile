@@ -10,7 +10,7 @@ The Crypto Volume Profile App is a streamlined web application designed for anal
 ![plot](img/symbols.png)
 
 - **Customizable Time Periods and Intervals**: The app offers flexibility in selecting the period (e.g., 1 year, 6 months, 2 years) and interval (e.g., daily, hourly) for the analysis.
-![plot](img/Periods.png)
+![plot](img/periods.png)
 ![plot](img/intervals.png)
 
 - **Volume Profile Visualization**: The app processes historical price and volume data to create a volume profile. This profile helps identify key price levels where significant trading volumes occurred.
