@@ -128,7 +128,7 @@ st.write("@VanHes1ng")
 st.write('''TradingView: https://www.tradingview.com/u/VanHe1sing/\n 
 Telegram: https://t.me/IvanKocherzhat\n 
 GitHub: https://github.com/VanHes1ng\n
-X: https://x.com/sxJEoRg7wwLR6ug             
+X: https://x.com/VanHe1sing_            
 ''')
 
 
