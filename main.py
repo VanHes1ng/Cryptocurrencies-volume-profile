@@ -18,7 +18,7 @@ with open('symbols.txt', 'r') as file:
     # Remove square brackets and split by comma
     symbols = [symbol.strip().strip("'") for symbol in content.split(',')]
 
-@st.cache_data
+
 def get_data(option, period, interval):
     df = yf.download(
                 tickers  = option,
@@ -102,7 +102,6 @@ ax2.set_ylabel('Volume')
 ax2.legend()
 
 plt.title(f'{option} Volume Profile')
-
 
 col1.pyplot(fig)
 
