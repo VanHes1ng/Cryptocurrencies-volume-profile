@@ -62,7 +62,7 @@ data       = pd.DataFrame(df)
 
 
 # Step 2: Process the data to create a volume profile
-price_bins        = np.linspace(data['Close'].min(), data['Close'].max(), 100)
+price_bins        = 100 #np.linspace(data['Close'].min(), data['Close'].max(), 100)
 volume_profile, _ = np.histogram(data['Close'], bins=price_bins, weights=data['Volume'])
 
 # Calculate bin centers for plotting
