@@ -60,9 +60,14 @@ st.toast(f'Loaded {option}!', icon="✅")
 
 data       = pd.DataFrame(df)
 
+data['Close'] = data['Close'].fillna(method='ffill')
+data['Volume'] = data['Volume'].fillna(0)
 
-# Step 2: Process the data to create a volume profile
-price_bins        = 100 #np.linspace(data['Close'].min(), data['Close'].max(), 100)
+if data['Close'].max() - data['Close'].min() < 0.01:  # Small range safeguard
+    price_bins = np.linspace(data['Close'].min() - 1, data['Close'].max() + 1, 100)
+else:
+    price_bins = np.linspace(data['Close'].min(), data['Close'].max(), 100)
+
 volume_profile, _ = np.histogram(data['Close'], bins=price_bins, weights=data['Volume'])
 
 # Calculate bin centers for plotting
