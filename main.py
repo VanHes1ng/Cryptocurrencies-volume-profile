@@ -83,7 +83,7 @@ ax.plot(data.index, data['Close'], color='black', alpha=0.5)
 
 # Draw horizontal lines where volume profile is bigger than threshold
 threshold     = np.percentile(volume_profile, threshold)  # Set threshold to percentile
-current_close = data['Close'].iloc[-1]  # Get the most recent closing price
+current_close = float(data['Close'].iloc[-1])  # Get the most recent closing price
 
 for price, volume in zip(bin_centers, volume_profile):
     if volume > threshold:
