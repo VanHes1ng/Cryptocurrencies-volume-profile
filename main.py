@@ -65,7 +65,7 @@ data['Volume'] = data['Volume'].fillna(0)
 
 price_bins = np.linspace(data['Close'].min(), data['Close'].max(), 100)
 
-volume_profile, _ = np.histogram(data['Close'], bins=price_bins, weights=data['Volume'])
+volume_profile, _ = np.histogram(data['Close'], bins=99, range=([data['Close'].min(), data['Close'].max()]), weights=data['Volume'])
 
 # Calculate bin centers for plotting
 bin_centers    = (price_bins[:-1] + price_bins[1:]) / 2
