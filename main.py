@@ -99,7 +99,7 @@ for price, volume in zip(bin_centers, volume_profile):
 # Plot volume profile
 cmap = mcolors.LinearSegmentedColormap.from_list("", ["aqua", "red"], gamma=0.7)
 
-ax2.barh(bin_centers, volume_profile, height=float(price_bins[1]-price_bins[0]), color=cmap(volume_profile/volume_profile.max()))
+ax2.barh(bin_centers, volume_profile, height=price_bins[1]-price_bins[0], color=cmap(volume_profile/volume_profile.max()))
 ax2.set_ylim(ax.get_ylim())
 ax2.axvline(x=threshold, color='gray', linestyle='--', linewidth=2, label=f'{94}th Percentile')
 
