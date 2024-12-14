@@ -63,7 +63,7 @@ data       = pd.DataFrame(df)
 data['Close'] = data['Close'].fillna(method='ffill')
 data['Volume'] = data['Volume'].fillna(0)
 
-price_bins = float(np.linspace(data['Close'].min(), data['Close'].max(), 100))
+price_bins = np.linspace(data['Close'].min(), data['Close'].max(), 100).astype(float)
 
 volume_profile, _ = np.histogram(
     data['Close'], 
@@ -73,7 +73,7 @@ volume_profile, _ = np.histogram(
 )
 
 # Calculate bin centers for plotting
-bin_centers    = float((price_bins[:-1] + price_bins[1:]) / 2)
+bin_centers    = ((price_bins[:-1] + price_bins[1:]) / 2).astype(float)
 
 # Create the plot
 fig, (ax2, ax) = plt.subplots(1, 2, figsize=(20, 10), gridspec_kw={'width_ratios': [1, 4]}, dpi=1000)
