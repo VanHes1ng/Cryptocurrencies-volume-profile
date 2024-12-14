@@ -87,13 +87,14 @@ current_close = data['Close'].iloc[-1]  # Get the most recent closing price
 
 for price, volume in zip(bin_centers, volume_profile):
     if volume > threshold:
-        if current_close > price:
+        if current_close > float(price):
             color = 'aqua'
             linestyle = "-"
         else:
             color = 'red'
             linestyle = "--"
-        ax.axhline(y=price, color=color, linestyle=linestyle, alpha=0.5, linewidth=4)
+        ax.axhline(y=float(price), color=color, linestyle=linestyle, alpha=0.5, linewidth=4)
+
 
 # Plot volume profile
 cmap = mcolors.LinearSegmentedColormap.from_list("", ["aqua", "red"], gamma=0.7)
