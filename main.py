@@ -63,7 +63,7 @@ data       = pd.DataFrame(df)
 data['Close'] = data['Close'].fillna(method='ffill')
 data['Volume'] = data['Volume'].fillna(0)
 
-price_bins = np.linspace(data['Close'].min(), data['Close'].max(), 100)
+price_bins = round(np.linspace(data['Close'].min(), data['Close'].max(), 100))
 
 volume_profile, _ = np.histogram(data['Close'], bins=price_bins, weights=data['Volume'])
 
