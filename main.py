@@ -63,7 +63,7 @@ data       = pd.DataFrame(df)
 data['Close'] = data['Close'].fillna(method='ffill')
 data['Volume'] = data['Volume'].fillna(0)
 
-price_bins = np.linspace(data['Close'].min(), data['Close'].max(), 100)
+price_bins = float(np.linspace(data['Close'].min(), data['Close'].max(), 100))
 
 volume_profile, _ = np.histogram(
     data['Close'], 
@@ -73,7 +73,7 @@ volume_profile, _ = np.histogram(
 )
 
 # Calculate bin centers for plotting
-bin_centers    = (price_bins[:-1] + price_bins[1:]) / 2
+bin_centers    = float((price_bins[:-1] + price_bins[1:]) / 2)
 
 # Create the plot
 fig, (ax2, ax) = plt.subplots(1, 2, figsize=(20, 10), gridspec_kw={'width_ratios': [1, 4]}, dpi=1000)
@@ -99,7 +99,7 @@ for price, volume in zip(bin_centers, volume_profile):
 # Plot volume profile
 cmap = mcolors.LinearSegmentedColormap.from_list("", ["aqua", "red"], gamma=0.7)
 
-ax2.barh(bin_centers, volume_profile, height=price_bins[1]-price_bins[0], color=cmap(volume_profile/volume_profile.max()))
+ax2.barh(bin_centers, volume_profile, height=float(price_bins[1]-price_bins[0]), color=cmap(volume_profile/volume_profile.max()))
 ax2.set_ylim(ax.get_ylim())
 ax2.axvline(x=threshold, color='gray', linestyle='--', linewidth=2, label=f'{94}th Percentile')
 
